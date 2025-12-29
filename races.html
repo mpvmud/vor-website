@@ -574,7 +574,58 @@ color: var(--parchment);
             .info-box .info-line { font-size: 0.98rem; }
         }
 
-    </style>
+    
+/* ===== RACE TABLE VISIBILITY & ACCESSIBILITY ===== */
+.race-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 24px;
+}
+
+.race-column {
+    overflow-x: auto;
+}
+
+.race-align {
+    text-align: center;
+    font-size: 1.6rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+}
+
+.race-align.good { color: #9fd6ff; }
+.race-align.evil { color: #ff9f9f; }
+
+.race-table {
+    font-size: 1.15rem;
+    line-height: 1.55;
+}
+
+.race-table th {
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+}
+
+.race-table td {
+    padding: 10px 14px;
+    text-align: center;
+}
+
+.race-note {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Mobile fallback */
+@media (max-width: 1100px) {
+    .race-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
 </head>
 <body>
     <div class="stone-bg"></div>
@@ -589,41 +640,18 @@ color: var(--parchment);
         </header>
 
         <main>
-            <section class="parchment-panel">
-                <h2>How to Read Race Stats</h2>
-                <p>
-                    Your race sets your <strong>maximum</strong> stat caps and grants racial abilities.
-                    In-game, you can type <strong>help &lt;race name&gt;</strong> for more detail.
-                </p>
-
-                <div class="feature-card info-box" style="margin-top: 18px;">
-                    <h3>Reading Race Stats</h3>
-                    <p class="info-line"><strong>S</strong> = Strength &nbsp;·&nbsp; <strong>C</strong> = Constitution &nbsp;·&nbsp; <strong>D</strong> = Dexterity &nbsp;·&nbsp; <strong>I</strong> = Intelligence &nbsp;·&nbsp; <strong>W</strong> = Wisdom</p>
-                    <p class="info-line"><strong>MSK</strong> = Max skill slots &nbsp;·&nbsp; <strong>MSP</strong> = Max spell slots</p>
-                    <p class="info-line">Each remort grants <strong>+1 MSK</strong> and <strong>+2 MSP</strong>.</p>
-                    <p class="info-line"><strong>AC</strong> = base armor class modifier &nbsp;·&nbsp; <strong>RHIT</strong> = base hit chance modifier &nbsp;·&nbsp; <strong>RMVS</strong> = base move/regen modifier</p>
-                    <p class="info-line">Racial abilities are always-on traits like <em>infrared</em>, <em>flying</em>, or detection skills.</p>
-                </div>
-
-                <div class="cta-row" style="margin-top: 22px;">
-                    <a class="cta-btn" href="index.html"><span class="sigil"></span> Back to Home</a>
-                    <a class="cta-btn discord" href="https://discord.gg/CkYm9WRnyw" target="_blank" rel="noopener noreferrer">
-                        <span class="sigil"></span> Join Discord
-                    </a>
-                </div>
-            </section>
-
             
-            <section class="parchment-panel">
-                <h2>Races</h2>
-                <p>Good and Evil races side-by-side for easy comparison. Type <strong>help &lt;race name&gt;</strong> in-game for the full helpfile.</p>
+<section class="parchment-panel">
+  <h2>Races</h2>
+  <p class="race-note">
+    Your race defines your stat caps, slot limits, and racial abilities.
+    Type <strong>help &lt;race name&gt;</strong> in-game for full details.
+  </p>
 
-                <div class="race-two-col">
-                    <div class="race-col">
-                        <h2>Good-Aligned Races</h2>
-<p>Stat caps and slot limits by race. Type <strong>help &lt;race name&gt;</strong> in-game for the full helpfile.</p>
-<div class="table-wrap">
-    <table class="guild-table race-table">
+  <div class="race-grid">
+    <div class="race-column">
+      <h3 class="race-align good">Good-Aligned Races</h3>
+      <table class="guild-table race-table">
       <thead>
         <tr>
           <th>Align</th>
@@ -650,12 +678,10 @@ color: var(--parchment);
       </tbody>
     </table>
     </div>
-                    </div>
-                    <div class="race-col">
-                        <h2>Evil-Aligned Races</h2>
-<p>Stat caps and slot limits by race. Type <strong>help &lt;race name&gt;</strong> in-game for the full helpfile.</p>
-<div class="table-wrap">
-    <table class="guild-table race-table">
+
+    <div class="race-column">
+      <h3 class="race-align evil">Evil-Aligned Races</h3>
+      <table class="guild-table race-table">
       <thead>
         <tr>
           <th>Align</th>
@@ -682,9 +708,9 @@ color: var(--parchment);
       </tbody>
     </table>
     </div>
-                    </div>
-                </div>
-            </section>
+  </div>
+</section>
+
 
 
             <section class="parchment-panel">
