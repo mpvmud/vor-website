@@ -555,6 +555,25 @@ color: var(--parchment);
             .race-table { font-size: 0.85rem; }
             .race-table th, .race-table td { padding: 8px 8px; }
         }
+    
+        /* Races page layout tweaks */
+        .info-box h3 { font-size: 1.35rem; letter-spacing: 0.14em; }
+        .info-box .info-line { font-size: 1.15rem; line-height: 1.65; }
+        .info-box { text-align: center; }
+
+        .race-table, .guild-table { text-align: center; }
+        .race-table th, .race-table td,
+        .guild-table th, .guild-table td { text-align: center; }
+
+        .race-table td:last-child { text-align: center; }
+
+        @media (max-width: 900px) {
+            .info-box .info-line { font-size: 1.05rem; }
+        }
+        @media (max-width: 600px) {
+            .info-box .info-line { font-size: 0.98rem; }
+        }
+
     </style>
 </head>
 <body>
@@ -577,43 +596,13 @@ color: var(--parchment);
                     In-game, you can type <strong>help &lt;race name&gt;</strong> for more detail.
                 </p>
 
-                <div class="features-grid" style="margin-top: 18px;">
-                    <div class="feature-card">
-                        <h3>Defense &amp; Combat</h3>
-                        <p>
-                            <strong>AC</strong> = base armor class modifier<br>
-                            <strong>RHIT</strong> = base hit chance modifier<br>
-                            <strong>RMVS</strong> = base move/regen modifier
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <h3>Stat Caps</h3>
-                        <p>
-                            <strong>S</strong> = Strength &nbsp;·&nbsp;
-                            <strong>C</strong> = Constitution &nbsp;·&nbsp;
-                            <strong>D</strong> = Dexterity<br>
-                            <strong>I</strong> = Intelligence &nbsp;·&nbsp;
-                            <strong>W</strong> = Wisdom
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <h3>Skill &amp; Spell Slots</h3>
-                        <p>
-                            <strong>MSK</strong> = Max skill slots &nbsp;·&nbsp;
-                            <strong>MSP</strong> = Max spell slots<br>
-                            Each remort grants <strong>+1 MSK</strong> and <strong>+2 MSP</strong>.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <h3>Abilities</h3>
-                        <p>
-                            Racial abilities are always-on traits like <em>infrared</em>,
-                            <em>flying</em>, or detection skills.
-                        </p>
-                    </div>
+                <div class="feature-card info-box" style="margin-top: 18px;">
+                    <h3>Reading Race Stats</h3>
+                    <p class="info-line"><strong>S</strong> = Strength &nbsp;·&nbsp; <strong>C</strong> = Constitution &nbsp;·&nbsp; <strong>D</strong> = Dexterity &nbsp;·&nbsp; <strong>I</strong> = Intelligence &nbsp;·&nbsp; <strong>W</strong> = Wisdom</p>
+                    <p class="info-line"><strong>MSK</strong> = Max skill slots &nbsp;·&nbsp; <strong>MSP</strong> = Max spell slots</p>
+                    <p class="info-line">Each remort grants <strong>+1 MSK</strong> and <strong>+2 MSP</strong>.</p>
+                    <p class="info-line"><strong>AC</strong> = base armor class modifier &nbsp;·&nbsp; <strong>RHIT</strong> = base hit chance modifier &nbsp;·&nbsp; <strong>RMVS</strong> = base move/regen modifier</p>
+                    <p class="info-line">Racial abilities are always-on traits like <em>infrared</em>, <em>flying</em>, or detection skills.</p>
                 </div>
 
                 <div class="cta-row" style="margin-top: 22px;">
@@ -624,8 +613,14 @@ color: var(--parchment);
                 </div>
             </section>
 
+            
             <section class="parchment-panel">
-                <h2>Good-Aligned Races</h2>
+                <h2>Races</h2>
+                <p>Good and Evil races side-by-side for easy comparison. Type <strong>help &lt;race name&gt;</strong> in-game for the full helpfile.</p>
+
+                <div class="race-two-col">
+                    <div class="race-col">
+                        <h2>Good-Aligned Races</h2>
 <p>Stat caps and slot limits by race. Type <strong>help &lt;race name&gt;</strong> in-game for the full helpfile.</p>
 <div class="table-wrap">
     <table class="guild-table race-table">
@@ -654,10 +649,10 @@ color: var(--parchment);
 <tr><td>Good</td><td><strong>Cloud-Giant</strong></td><td>34</td><td>35</td><td>25</td><td>21</td><td>20</td><td>23</td><td>20</td><td>50</td><td>110</td><td>100</td><td>None</td></tr>
       </tbody>
     </table>
-    </div></section>
-
-            <section class="parchment-panel">
-                <h2>Evil-Aligned Races</h2>
+    </div>
+                    </div>
+                    <div class="race-col">
+                        <h2>Evil-Aligned Races</h2>
 <p>Stat caps and slot limits by race. Type <strong>help &lt;race name&gt;</strong> in-game for the full helpfile.</p>
 <div class="table-wrap">
     <table class="guild-table race-table">
@@ -686,7 +681,11 @@ color: var(--parchment);
 <tr><td>Evil</td><td><strong>Stone-Giant</strong></td><td>34</td><td>35</td><td>25</td><td>21</td><td>20</td><td>23</td><td>20</td><td>50</td><td>110</td><td>100</td><td>None</td></tr>
       </tbody>
     </table>
-    </div></section>
+    </div>
+                    </div>
+                </div>
+            </section>
+
 
             <section class="parchment-panel">
                 <h2>Major Guilds</h2>
