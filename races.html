@@ -614,8 +614,21 @@ color: var(--parchment);
 
 .race-note {
     text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+    font-size: 1.55rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.08em;
+}
+
+.race-key{
+    text-align:center;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin: 10px auto 6px;
+    max-width: 1200px;
+    color: rgba(230,230,230,0.92);
+}
+.race-key strong{
+    color: rgba(250,230,170,0.95);
 }
 
 /* Mobile fallback */
@@ -623,6 +636,27 @@ color: var(--parchment);
     .race-grid {
         grid-template-columns: 1fr;
     }
+}
+
+
+/* Side-by-side guild tables */
+.guild-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 18px;
+}
+.guild-column{ overflow-x:auto; }
+
+.guild-table{
+    font-size: 1.15rem;
+    line-height: 1.55;
+}
+.guild-table th{ font-size: 1.05rem; }
+.guild-table td{ padding: 10px 14px; text-align:center; }
+
+@media (max-width: 1100px){
+    .guild-grid{ grid-template-columns: 1fr; }
 }
 
 </style>
@@ -648,6 +682,13 @@ color: var(--parchment);
     Type <strong>help &lt;race name&gt;</strong> in-game for full details.
   </p>
 
+  <div class="race-key">
+    <div><strong>S</strong>=Strength · <strong>C</strong>=Constitution · <strong>D</strong>=Dexterity · <strong>I</strong>=Intelligence · <strong>W</strong>=Wisdom</div>
+    <div><strong>MSK</strong>=Max skill slots · <strong>MSP</strong>=Max spell slots (each remort: <strong>+1 MSK</strong>, <strong>+2 MSP</strong>)</div>
+    <div><strong>AC</strong>=Base armor modifier · <strong>RHIT</strong>=Regen/Hit rate (<strong>100</strong>=normal) · <strong>RMVS</strong>=Move/regen rate (<strong>100</strong>=normal)</div>
+  </div>
+
+
   <div class="race-grid">
     <div class="race-column">
       <h3 class="race-align good">Good-Aligned Races</h3>
@@ -665,7 +706,7 @@ color: var(--parchment);
       <tbody>
     <tr><td>Good</td><td><strong>Human</strong></td><td>28</td><td>28</td><td>28</td><td>28</td><td>28</td><td>20</td><td>45</td><td>0</td><td>100</td><td>100</td><td>None</td></tr>
 <tr><td>Good</td><td><strong>High-Elf</strong></td><td>24</td><td>25</td><td>23</td><td>35</td><td>28</td><td>9</td><td>65</td><td>0</td><td>120</td><td>105</td><td>detect-invis, infrared</td></tr>
-<tr><td>Good</td><td><strong>Forest-Troll</strong></td><td>33</td><td>30</td><td>26</td><td>23</td><td>23</td><td>25</td><td>15</td><td>25</td><td>350</td><td>150</td><td>infrared</td></tr>
+<tr><td>Good</td><td><strong>Forest-Troll</strong></td><td>33</td><td>30</td><td>26</td><td>23</td><td>23</td><td>25</td><td>15</td><td>25</td><td>200</td><td>150</td><td>infrared</td></tr>
 <tr><td>Good</td><td><strong>Arch-Angel</strong></td><td>24</td><td>25</td><td>23</td><td>28</td><td>35</td><td>10</td><td>55</td><td>10</td><td>110</td><td>105</td><td>infrared, flying</td></tr>
 <tr><td>Good</td><td><strong>Thri-Kreen</strong></td><td>31</td><td>29</td><td>31</td><td>22</td><td>22</td><td>19</td><td>23</td><td>90</td><td>125</td><td>110</td><td>speed, infrared</td></tr>
 <tr><td>Good</td><td><strong>Dwarf</strong></td><td>30</td><td>26</td><td>25</td><td>24</td><td>30</td><td>18</td><td>23</td><td>10</td><td>150</td><td>105</td><td>infrared</td></tr>
@@ -695,7 +736,7 @@ color: var(--parchment);
       <tbody>
     <tr><td>Evil</td><td><strong>Human</strong></td><td>28</td><td>28</td><td>28</td><td>28</td><td>28</td><td>20</td><td>45</td><td>0</td><td>100</td><td>100</td><td>None</td></tr>
 <tr><td>Evil</td><td><strong>Drow</strong></td><td>24</td><td>25</td><td>23</td><td>35</td><td>28</td><td>9</td><td>65</td><td>0</td><td>120</td><td>105</td><td>detect-invis, infrared</td></tr>
-<tr><td>Evil</td><td><strong>Swamp-Troll</strong></td><td>33</td><td>30</td><td>26</td><td>23</td><td>23</td><td>25</td><td>15</td><td>25</td><td>350</td><td>150</td><td>infrared</td></tr>
+<tr><td>Evil</td><td><strong>Swamp-Troll</strong></td><td>33</td><td>30</td><td>26</td><td>23</td><td>23</td><td>25</td><td>15</td><td>25</td><td>200</td><td>150</td><td>infrared</td></tr>
 <tr><td>Evil</td><td><strong>Lich</strong></td><td>24</td><td>25</td><td>23</td><td>28</td><td>35</td><td>10</td><td>55</td><td>10</td><td>110</td><td>105</td><td>infrared, flying</td></tr>
 <tr><td>Evil</td><td><strong>Shri-Kreen</strong></td><td>31</td><td>29</td><td>31</td><td>22</td><td>22</td><td>19</td><td>23</td><td>90</td><td>125</td><td>110</td><td>speed, infrared</td></tr>
 <tr><td>Evil</td><td><strong>Orc</strong></td><td>30</td><td>26</td><td>25</td><td>24</td><td>30</td><td>18</td><td>23</td><td>10</td><td>150</td><td>105</td><td>infrared</td></tr>
@@ -713,8 +754,15 @@ color: var(--parchment);
 
 
 
-            <section class="parchment-panel">
-                <h2>Major Guilds</h2>
+            
+<section class="parchment-panel">
+  <h2>Guilds</h2>
+  <p style="text-align:center; font-size:1.15rem; margin-bottom: 18px;">
+    Guilds grant permanent bonuses. Choose a major path, then refine with a minor discipline.
+  </p>
+  <div class="guild-grid">
+    <div class="guild-column">
+      <h2>Major Guilds</h2>
                 <p>Major guilds define your core archetype and provide a primary stat bonus.</p>
                 <table class="guild-table">
                     <thead><tr><th>Guild</th><th>Stat Bonus</th><th>Other Bonuses</th></tr></thead>
@@ -722,10 +770,10 @@ color: var(--parchment);
                         <tr><td><strong>Warrior</strong></td><td>+1 STR</td><td>—</td></tr><tr><td><strong>Wizard</strong></td><td>+1 INT</td><td>+damage on offensive spells</td></tr><tr><td><strong>Healer</strong></td><td>+1 WIS</td><td>+hps on heal spells</td></tr><tr><td><strong>Thief</strong></td><td>+1 DEX</td><td>Increased dodge</td></tr><tr><td><strong>Pugilist</strong></td><td>+1 STR</td><td>Unarmed combat bonus</td></tr><tr><td><strong>Warlock</strong></td><td>+1 INT</td><td>Damage over time</td></tr>
                     </tbody>
                 </table>
-            </section>
-
-            <section class="parchment-panel">
-                <h2>Minor Guilds</h2>
+            
+    </div>
+    <div class="guild-column">
+      <h2>Minor Guilds</h2>
                 <p>Minor guilds add specialized utility and flavor bonuses.</p>
                 <table class="guild-table">
                     <thead><tr><th>Guild</th><th>Stat Bonus</th><th>Other Bonuses</th></tr></thead>
@@ -733,7 +781,11 @@ color: var(--parchment);
                         <tr><td><strong>Tinker</strong></td><td>+1 CON</td><td>Lower costs to repair gear</td></tr><tr><td><strong>Tactics</strong></td><td>+1 CON</td><td>Evaluate skill at 50%</td></tr><tr><td><strong>Ranger</strong></td><td>+1 CON</td><td>Track skill at 100%, view_mobs flag</td></tr><tr><td><strong>Assassin</strong></td><td>+1 DEX</td><td>Increased BS damage</td></tr><tr><td><strong>Shaman</strong></td><td>+1 WIS</td><td>—</td></tr><tr><td><strong>Mystics</strong></td><td>+1 INT</td><td>—</td></tr>
                     </tbody>
                 </table>
-            </section>
+            
+    </div>
+  </div>
+</section>
+
         </main>
 
         <footer>
