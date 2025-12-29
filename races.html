@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -509,141 +509,163 @@ color: var(--parchment);
             50% { opacity: 0.85; }
         }
 
-        </style>
+        
+        /* Tables (Races & Guilds page) */
+        .guild-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 18px;
+            font-family: 'IM Fell English', serif;
+            background: rgba(10, 9, 12, 0.35);
+            border: 1px solid rgba(142, 133, 114, 0.22);
+        }
+        .guild-table th, .guild-table td {
+            padding: 12px 12px;
+            border-bottom: 1px solid rgba(142, 133, 114, 0.18);
+            text-align: left;
+            vertical-align: top;
+        }
+        .guild-table thead th {
+            color: rgba(241, 237, 228, 0.95);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        .guild-table td {
+            color: rgba(216, 210, 197, 0.90);
+        }
+        .guild-table tr:hover td {
+            background: rgba(107, 15, 20, 0.10);
+        }
+    
+    </style>
 </head>
 <body>
     <div class="stone-bg"></div>
     <div class="torch-glow-left"></div>
     <div class="torch-glow-right"></div>
 
-    <div class="page-frame">
+    <div class="container">
         <header>
             <div class="banner-decoration"></div>
-            <h1>Void of Reality</h1>
-            <p class="subtitle">A Text-Based Adventure Awaits</p>
-            <span class="since-badge">Forged in 1996</span>
-            
-            <!-- Simple Shield/Crest SVG -->
-            <div class="crest">
-                <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#4a4035"/>
-                            <stop offset="50%" style="stop-color:#2a2520"/>
-                            <stop offset="100%" style="stop-color:#1a1510"/>
-                        </linearGradient>
-                        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#8b6914"/>
-                            <stop offset="50%" style="stop-color:#c9a227"/>
-                            <stop offset="100%" style="stop-color:#8b6914"/>
-                        </linearGradient>
-                    </defs>
-                    <!-- Shield shape -->
-                    <path d="M50 5 L95 20 L95 60 Q95 100 50 115 Q5 100 5 60 L5 20 Z" 
-                          fill="url(#shieldGrad)" stroke="url(#goldGrad)" stroke-width="2"/>
-                    <!-- Inner border -->
-                    <path d="M50 12 L88 25 L88 58 Q88 93 50 107 Q12 93 12 58 L12 25 Z" 
-                          fill="none" stroke="#8b6914" stroke-width="1" opacity="0.5"/>
-                    <!-- Crossed swords -->
-                    <line x1="30" y1="35" x2="70" y2="85" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>
-                    <line x1="70" y1="35" x2="30" y2="85" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>
-                    <!-- Sword hilts -->
-                    <circle cx="30" cy="35" r="4" fill="#c9a227"/>
-                    <circle cx="70" cy="35" r="4" fill="#c9a227"/>
-                    <!-- Center gem -->
-                    <circle cx="50" cy="60" r="8" fill="#8b1a1a" stroke="#c9a227" stroke-width="1.5"/>
-                    <circle cx="48" cy="58" r="2" fill="#d44" opacity="0.6"/>
-                </svg>
-            </div>
+            <h1>Races &amp; Guilds</h1>
+            <p class="subtitle">Depth, identity, and long-term progression in Void of Reality</p>
         </header>
 
         <main>
-            <!-- Welcome Panel -->
             <section class="parchment-panel">
-                <h2>Enter the Void</h2>
+                <h2>How to Read Race Stats</h2>
                 <p>
-                    Step into a world of fantasy and adventure that has captivated players for nearly three decades. 
-                    Void of Reality is a Multi-User Dungeon (MUD) — a text-based multiplayer game where your 
-                    imagination brings the world to life.
+                    Your race sets your <strong>maximum</strong> stat caps and grants racial abilities.
+                    In-game, you can type <strong>help &lt;race name&gt;</strong> for more detail.
                 </p>
-                <p>
-                    Battle fearsome creatures, master powerful abilities, join guilds of like-minded adventurers, 
-                    and carve your legend into the annals of history. Whether you seek glory in combat, 
-                    riches through exploration, or the thrill of player-versus-player warfare, 
-                    your destiny awaits.
-                </p>
+
+                <div class="features-grid" style="margin-top: 18px;">
+                    <div class="feature-card">
+                        <h3>Stat Caps</h3>
+                        <p>
+                            <strong>S</strong> = Strength &nbsp;·&nbsp;
+                            <strong>C</strong> = Constitution &nbsp;·&nbsp;
+                            <strong>D</strong> = Dexterity<br>
+                            <strong>I</strong> = Intelligence &nbsp;·&nbsp;
+                            <strong>W</strong> = Wisdom
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Skill &amp; Spell Slots</h3>
+                        <p>
+                            <strong>MSK</strong> = Max skill slots &nbsp;·&nbsp;
+                            <strong>MSP</strong> = Max spell slots<br>
+                            Each remort grants <strong>+1 MSK</strong> and <strong>+2 MSP</strong>.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Abilities</h3>
+                        <p>
+                            Racial abilities are always-on traits like <em>infrared</em>,
+                            <em>flying</em>, or detection skills.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cta-row" style="margin-top: 22px;">
+                    <a class="cta-btn" href="index.html"><span class="sigil"></span> Back to Home</a>
+                    <a class="cta-btn discord" href="https://discord.gg/CkYm9WRnyw" target="_blank" rel="noopener noreferrer">
+                        <span class="sigil"></span> Join Discord
+                    </a>
+                </div>
             </section>
 
-            <!-- Connection Box -->
-            <div class="connect-box">
-                <p class="connect-label">Begin Your Journey</p>
-                <p class="connect-address">vor.voidofreality.org : 7777</p>
-                <p class="connect-note">Connect using your favorite MUD client (Mudlet, zMUD, TinTin++, etc.)</p>
-</div>
-
-            <!-- Features -->
-            <section class="feature-grid">
-                <div class="feature-card">
-                    <span class="feature-icon">⚔️</span>
-                    <h3>Epic Combat</h3>
-                    <p>Engage in real-time tactical battles with a deep combat system featuring weapons, magic, and special abilities.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">🏰</span>
-                    <h3>Vast World</h3>
-                    <p>A 100% original world with <strong>117 open areas</strong> and <strong>20,000+ rooms</strong> to explore — built for discovery, danger, and long-term progression. Progress is driven by exploration, combat, and player choice.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">⚗️</span>
-                    <h3>Character Depth</h3>
-                    <p>Multiple races, guilds, and a remort system let you build truly unique characters over time.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">💎</span>
-                    <h3>Powerful Items</h3>
-                    <p>Hunt for <strong>loot chests</strong> that can randomly drop from mobs. <strong>Enchant</strong> and <strong>socket</strong> your gear to forge truly personal builds. Mobs can also randomly drop <strong>epic</strong> or <strong>legendary</strong> versions of the items they load.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">👥</span>
-                    <h3>Community</h3>
-                    <p>Join a welcoming community of veteran and new players alike, united by a love of adventure.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">🗺️</span>
-                    <h3>Modern Clients</h3>
-                    <p>Full support for GMCP and MSDP protocols enables enhanced mapping and interface features.</p>
-                </div>
+            <section class="parchment-panel">
+                <h2>Good-Aligned Races</h2>
+                <table class="guild-table">
+                    <thead><tr><th>Race</th><th>Racial Abilities</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Human</strong></td><td>None</td></tr>
+<tr><td><strong>High-Elf</strong></td><td>detect-invis, infrared</td></tr>
+<tr><td><strong>Forest-Troll</strong></td><td>infrared</td></tr>
+<tr><td><strong>Arch-Angel</strong></td><td>infrared, flying</td></tr>
+<tr><td><strong>Thri-Kreen</strong></td><td>speed, infrared</td></tr>
+<tr><td><strong>Dwarf</strong></td><td>infrared</td></tr>
+<tr><td><strong>Kender</strong></td><td>detect-hidden, infrared</td></tr>
+<tr><td><strong>Sea-Elf</strong></td><td>infrared, water-breath</td></tr>
+<tr><td><strong>Wild-Elf</strong></td><td>infrared</td></tr>
+<tr><td><strong>Githzerai</strong></td><td>sanctuary, mindshield</td></tr>
+<tr><td><strong>Dragonkin</strong></td><td>infrared, flying</td></tr>
+<tr><td><strong>Cloud-Giant</strong></td><td>None</td></tr>
+                    </tbody>
+                </table>
             </section>
-        
-        <section class="parchment-panel">
-            <h2>Community</h2>
-            <p>
-                Join the community surrounding Void of Reality to chat with players, share discoveries, report issues,
-                and help shape the future of the world.
-            </p>
 
-            <div class="cta-row">
-                <a class="cta-btn discord" href="https://discord.gg/CkYm9WRnyw" target="_blank" rel="noopener noreferrer">
-                    <span class="sigil"></span> Join Our Discord
-                </a>
-                <a class="cta-btn" href="https://mudvault.org" target="_blank" rel="noopener noreferrer">
-                    <span class="sigil"></span> Vote on MudVault
-                </a>
-                <a class="cta-btn" href="https://www.mudverse.com/vote/614" target="_blank" rel="noopener noreferrer">
-                    <span class="sigil"></span> Vote on MudVerse
-                </a>
-            </div>
-        </section>
+            <section class="parchment-panel">
+                <h2>Evil-Aligned Races</h2>
+                <table class="guild-table">
+                    <thead><tr><th>Race</th><th>Racial Abilities</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Human</strong></td><td>None</td></tr>
+<tr><td><strong>Drow</strong></td><td>detect-invis, infrared</td></tr>
+<tr><td><strong>Swamp-Troll</strong></td><td>infrared</td></tr>
+<tr><td><strong>Lich</strong></td><td>infrared, flying</td></tr>
+<tr><td><strong>Shri-Kreen</strong></td><td>speed, infrared</td></tr>
+<tr><td><strong>Orc</strong></td><td>infrared</td></tr>
+<tr><td><strong>Skaven</strong></td><td>detect-hidden, infrared</td></tr>
+<tr><td><strong>Sahugin</strong></td><td>infrared, water-breath</td></tr>
+<tr><td><strong>Gray-Elf</strong></td><td>infrared</td></tr>
+<tr><td><strong>Githyanki</strong></td><td>sanctuary, mindshield</td></tr>
+<tr><td><strong>Draconian</strong></td><td>infrared, flying</td></tr>
+<tr><td><strong>Stone-Giant</strong></td><td>None</td></tr>
+                    </tbody>
+                </table>
+            </section>
 
-</main>
+            <section class="parchment-panel">
+                <h2>Major Guilds</h2>
+                <p>Major guilds define your core archetype and provide a primary stat bonus.</p>
+                <table class="guild-table">
+                    <thead><tr><th>Guild</th><th>Stat Bonus</th><th>Other Bonuses</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Warrior</strong></td><td>+1 STR</td><td>—</td></tr><tr><td><strong>Wizard</strong></td><td>+1 INT</td><td>+damage on offensive spells</td></tr><tr><td><strong>Healer</strong></td><td>+1 WIS</td><td>+hps on heal spells</td></tr><tr><td><strong>Thief</strong></td><td>+1 DEX</td><td>Increased dodge</td></tr><tr><td><strong>Pugilist</strong></td><td>+1 STR</td><td>Unarmed combat bonus</td></tr><tr><td><strong>Warlock</strong></td><td>+1 INT</td><td>Damage over time</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="parchment-panel">
+                <h2>Minor Guilds</h2>
+                <p>Minor guilds add specialized utility and flavor bonuses.</p>
+                <table class="guild-table">
+                    <thead><tr><th>Guild</th><th>Stat Bonus</th><th>Other Bonuses</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Tinker</strong></td><td>+1 CON</td><td>Lower costs to repair gear</td></tr><tr><td><strong>Tactics</strong></td><td>+1 CON</td><td>Evaluate skill at 50%</td></tr><tr><td><strong>Ranger</strong></td><td>+1 CON</td><td>Track skill at 100%, view_mobs flag</td></tr><tr><td><strong>Assassin</strong></td><td>+1 DEX</td><td>Increased BS damage</td></tr><tr><td><strong>Shaman</strong></td><td>+1 WIS</td><td>—</td></tr><tr><td><strong>Mystics</strong></td><td>+1 INT</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
 
         <footer>
-            <div class="footer-decoration">— ✦ —</div>
-            <p>Void of Reality has been running continuously since 1996</p>
-            <p>Built on the EmlenMUD codebase</p>
-            <p style="margin-top: 20px; font-size: 0.85rem;">
-                New to MUDs? Try <a href="https://www.mudlet.org/" target="_blank">Mudlet</a> — it's free and works great!
-            </p>
+            <div class="banner-decoration"></div>
+            <p>© Void of Reality — adventure, danger, and discovery.</p>
         </footer>
     </div>
 </body>
