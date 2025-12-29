@@ -538,6 +538,23 @@ color: var(--parchment);
             background: rgba(107, 15, 20, 0.10);
         }
     
+    
+        /* Races table */
+        .race-table { font-size: 0.98rem; }
+        .race-table th, .race-table td { padding: 10px 10px; }
+        .race-table td:nth-child(1) { width: 70px; }
+        .race-table td:nth-child(2) { width: 160px; }
+        .race-table td:last-child { min-width: 220px; }
+
+        .table-wrap { overflow-x: auto; }
+
+        @media (max-width: 900px) {
+            .race-table { font-size: 0.9rem; }
+        }
+        @media (max-width: 600px) {
+            .race-table { font-size: 0.85rem; }
+            .race-table th, .race-table td { padding: 8px 8px; }
+        }
     </style>
 </head>
 <body>
@@ -561,6 +578,15 @@ color: var(--parchment);
                 </p>
 
                 <div class="features-grid" style="margin-top: 18px;">
+                    <div class="feature-card">
+                        <h3>Defense &amp; Combat</h3>
+                        <p>
+                            <strong>AC</strong> = base armor class modifier<br>
+                            <strong>RHIT</strong> = base hit chance modifier<br>
+                            <strong>RMVS</strong> = base move/regen modifier
+                        </p>
+                    </div>
+
                     <div class="feature-card">
                         <h3>Stat Caps</h3>
                         <p>
@@ -600,45 +626,67 @@ color: var(--parchment);
 
             <section class="parchment-panel">
                 <h2>Good-Aligned Races</h2>
-                <table class="guild-table">
-                    <thead><tr><th>Race</th><th>Racial Abilities</th></tr></thead>
-                    <tbody>
-                        <tr><td><strong>Human</strong></td><td>None</td></tr>
-<tr><td><strong>High-Elf</strong></td><td>detect-invis, infrared</td></tr>
-<tr><td><strong>Forest-Troll</strong></td><td>infrared</td></tr>
-<tr><td><strong>Arch-Angel</strong></td><td>infrared, flying</td></tr>
-<tr><td><strong>Thri-Kreen</strong></td><td>speed, infrared</td></tr>
-<tr><td><strong>Dwarf</strong></td><td>infrared</td></tr>
-<tr><td><strong>Kender</strong></td><td>detect-hidden, infrared</td></tr>
-<tr><td><strong>Sea-Elf</strong></td><td>infrared, water-breath</td></tr>
-<tr><td><strong>Wild-Elf</strong></td><td>infrared</td></tr>
-<tr><td><strong>Githzerai</strong></td><td>sanctuary, mindshield</td></tr>
-<tr><td><strong>Dragonkin</strong></td><td>infrared, flying</td></tr>
-<tr><td><strong>Cloud-Giant</strong></td><td>None</td></tr>
-                    </tbody>
-                </table>
-            </section>
+<p>Stat caps and slot limits by race. Type <strong>help &lt;race name&gt;</strong> in-game for the full helpfile.</p>
+<div class="table-wrap">
+    <table class="guild-table race-table">
+      <thead>
+        <tr>
+          <th>Align</th>
+          <th>Race</th>
+          <th>S</th><th>C</th><th>D</th><th>I</th><th>W</th>
+          <th>MSK</th><th>MSP</th>
+          <th>AC</th><th>RHIT</th><th>RMVS</th>
+          <th>Racial Abilities</th>
+        </tr>
+      </thead>
+      <tbody>
+    <tr><td>Good</td><td><strong>Human</strong></td><td>28</td><td>28</td><td>28</td><td>28</td><td>28</td><td>20</td><td>45</td><td>0</td><td>100</td><td>100</td><td>None</td></tr>
+<tr><td>Good</td><td><strong>High-Elf</strong></td><td>24</td><td>25</td><td>23</td><td>35</td><td>28</td><td>9</td><td>65</td><td>0</td><td>120</td><td>105</td><td>detect-invis, infrared</td></tr>
+<tr><td>Good</td><td><strong>Forest-Troll</strong></td><td>33</td><td>30</td><td>26</td><td>23</td><td>23</td><td>25</td><td>15</td><td>25</td><td>350</td><td>150</td><td>infrared</td></tr>
+<tr><td>Good</td><td><strong>Arch-Angel</strong></td><td>24</td><td>25</td><td>23</td><td>28</td><td>35</td><td>10</td><td>55</td><td>10</td><td>110</td><td>105</td><td>infrared, flying</td></tr>
+<tr><td>Good</td><td><strong>Thri-Kreen</strong></td><td>31</td><td>29</td><td>31</td><td>22</td><td>22</td><td>19</td><td>23</td><td>90</td><td>125</td><td>110</td><td>speed, infrared</td></tr>
+<tr><td>Good</td><td><strong>Dwarf</strong></td><td>30</td><td>26</td><td>25</td><td>24</td><td>30</td><td>18</td><td>23</td><td>10</td><td>150</td><td>105</td><td>infrared</td></tr>
+<tr><td>Good</td><td><strong>Kender</strong></td><td>28</td><td>27</td><td>35</td><td>22</td><td>23</td><td>16</td><td>25</td><td>10</td><td>110</td><td>110</td><td>detect-hidden, infrared</td></tr>
+<tr><td>Good</td><td><strong>Sea-Elf</strong></td><td>25</td><td>24</td><td>24</td><td>32</td><td>30</td><td>9</td><td>60</td><td>0</td><td>110</td><td>105</td><td>infrared, water-breath</td></tr>
+<tr><td>Good</td><td><strong>Wild-Elf</strong></td><td>26</td><td>30</td><td>30</td><td>24</td><td>25</td><td>16</td><td>25</td><td>0</td><td>110</td><td>120</td><td>infrared</td></tr>
+<tr><td>Good</td><td><strong>Githzerai</strong></td><td>24</td><td>24</td><td>23</td><td>33</td><td>31</td><td>13</td><td>45</td><td>10</td><td>110</td><td>100</td><td>sanctuary, mindshield</td></tr>
+<tr><td>Good</td><td><strong>Dragonkin</strong></td><td>23</td><td>27</td><td>25</td><td>30</td><td>30</td><td>12</td><td>45</td><td>30</td><td>110</td><td>100</td><td>infrared, flying</td></tr>
+<tr><td>Good</td><td><strong>Cloud-Giant</strong></td><td>34</td><td>35</td><td>25</td><td>21</td><td>20</td><td>23</td><td>20</td><td>50</td><td>110</td><td>100</td><td>None</td></tr>
+      </tbody>
+    </table>
+    </div></section>
 
             <section class="parchment-panel">
                 <h2>Evil-Aligned Races</h2>
-                <table class="guild-table">
-                    <thead><tr><th>Race</th><th>Racial Abilities</th></tr></thead>
-                    <tbody>
-                        <tr><td><strong>Human</strong></td><td>None</td></tr>
-<tr><td><strong>Drow</strong></td><td>detect-invis, infrared</td></tr>
-<tr><td><strong>Swamp-Troll</strong></td><td>infrared</td></tr>
-<tr><td><strong>Lich</strong></td><td>infrared, flying</td></tr>
-<tr><td><strong>Shri-Kreen</strong></td><td>speed, infrared</td></tr>
-<tr><td><strong>Orc</strong></td><td>infrared</td></tr>
-<tr><td><strong>Skaven</strong></td><td>detect-hidden, infrared</td></tr>
-<tr><td><strong>Sahugin</strong></td><td>infrared, water-breath</td></tr>
-<tr><td><strong>Gray-Elf</strong></td><td>infrared</td></tr>
-<tr><td><strong>Githyanki</strong></td><td>sanctuary, mindshield</td></tr>
-<tr><td><strong>Draconian</strong></td><td>infrared, flying</td></tr>
-<tr><td><strong>Stone-Giant</strong></td><td>None</td></tr>
-                    </tbody>
-                </table>
-            </section>
+<p>Stat caps and slot limits by race. Type <strong>help &lt;race name&gt;</strong> in-game for the full helpfile.</p>
+<div class="table-wrap">
+    <table class="guild-table race-table">
+      <thead>
+        <tr>
+          <th>Align</th>
+          <th>Race</th>
+          <th>S</th><th>C</th><th>D</th><th>I</th><th>W</th>
+          <th>MSK</th><th>MSP</th>
+          <th>AC</th><th>RHIT</th><th>RMVS</th>
+          <th>Racial Abilities</th>
+        </tr>
+      </thead>
+      <tbody>
+    <tr><td>Evil</td><td><strong>Human</strong></td><td>28</td><td>28</td><td>28</td><td>28</td><td>28</td><td>20</td><td>45</td><td>0</td><td>100</td><td>100</td><td>None</td></tr>
+<tr><td>Evil</td><td><strong>Drow</strong></td><td>24</td><td>25</td><td>23</td><td>35</td><td>28</td><td>9</td><td>65</td><td>0</td><td>120</td><td>105</td><td>detect-invis, infrared</td></tr>
+<tr><td>Evil</td><td><strong>Swamp-Troll</strong></td><td>33</td><td>30</td><td>26</td><td>23</td><td>23</td><td>25</td><td>15</td><td>25</td><td>350</td><td>150</td><td>infrared</td></tr>
+<tr><td>Evil</td><td><strong>Lich</strong></td><td>24</td><td>25</td><td>23</td><td>28</td><td>35</td><td>10</td><td>55</td><td>10</td><td>110</td><td>105</td><td>infrared, flying</td></tr>
+<tr><td>Evil</td><td><strong>Shri-Kreen</strong></td><td>31</td><td>29</td><td>31</td><td>22</td><td>22</td><td>19</td><td>23</td><td>90</td><td>125</td><td>110</td><td>speed, infrared</td></tr>
+<tr><td>Evil</td><td><strong>Orc</strong></td><td>30</td><td>26</td><td>25</td><td>24</td><td>30</td><td>18</td><td>23</td><td>10</td><td>150</td><td>105</td><td>infrared</td></tr>
+<tr><td>Evil</td><td><strong>Skaven</strong></td><td>28</td><td>27</td><td>35</td><td>22</td><td>23</td><td>16</td><td>25</td><td>10</td><td>110</td><td>110</td><td>detect-hidden, infrared</td></tr>
+<tr><td>Evil</td><td><strong>Sahugin</strong></td><td>25</td><td>24</td><td>24</td><td>32</td><td>30</td><td>9</td><td>60</td><td>0</td><td>110</td><td>105</td><td>infrared, water-breath</td></tr>
+<tr><td>Evil</td><td><strong>Gray-Elf</strong></td><td>26</td><td>30</td><td>30</td><td>24</td><td>25</td><td>16</td><td>25</td><td>0</td><td>110</td><td>120</td><td>infrared</td></tr>
+<tr><td>Evil</td><td><strong>Githyanki</strong></td><td>24</td><td>24</td><td>23</td><td>33</td><td>31</td><td>13</td><td>45</td><td>10</td><td>110</td><td>100</td><td>sanctuary, mindshield</td></tr>
+<tr><td>Evil</td><td><strong>Draconian</strong></td><td>23</td><td>27</td><td>25</td><td>30</td><td>30</td><td>12</td><td>45</td><td>30</td><td>110</td><td>100</td><td>infrared, flying</td></tr>
+<tr><td>Evil</td><td><strong>Stone-Giant</strong></td><td>34</td><td>35</td><td>25</td><td>21</td><td>20</td><td>23</td><td>20</td><td>50</td><td>110</td><td>100</td><td>None</td></tr>
+      </tbody>
+    </table>
+    </div></section>
 
             <section class="parchment-panel">
                 <h2>Major Guilds</h2>
