@@ -754,6 +754,116 @@ color: var(--parchment);
     color:#e8e8e8;
 }
 
+
+/* ===== REMORTS ===== */
+.section-subtitle{
+    text-align:center;
+    font-size:1.15rem;
+    line-height:1.65;
+    margin: 6px auto 18px;
+    max-width: 1050px;
+    color: rgba(235,235,235,0.9);
+}
+
+.remort-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-top: 14px;
+}
+
+.remort-card{
+    background: rgba(0,0,0,0.30);
+    border: 1px solid rgba(200,180,120,0.22);
+    border-radius: 14px;
+    padding: 18px 18px 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.remort-card--wide{
+    grid-column: 1 / -1;
+}
+
+.remort-card h3{
+    text-align:center;
+    margin: 6px 0 12px;
+    letter-spacing: .10em;
+}
+
+.remort-inline{
+    text-align:center;
+    margin: 14px 0 10px;
+}
+
+.pill{
+    display:inline-block;
+    margin: 6px 6px 0;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(159,214,255,0.20);
+    background: rgba(0,0,0,0.35);
+    color: rgba(225,235,245,0.92);
+    font-weight: 700;
+    letter-spacing: .06em;
+    font-size: 0.98rem;
+}
+
+.remort-note{
+    text-align:center;
+    font-size: 1.05rem;
+    color: rgba(235,235,235,0.88);
+    margin: 10px 0 4px;
+}
+
+.data-table{
+    width:100%;
+    border-collapse: collapse;
+    margin: 6px 0 10px;
+    font-size: 1.05rem;
+}
+
+.data-table th, .data-table td{
+    padding: 10px 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.data-table thead th{
+    font-size: .95rem;
+    letter-spacing: .10em;
+    color: rgba(200,180,120,0.92);
+    background: rgba(0,0,0,0.25);
+}
+
+.callout{
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(200,180,120,0.18);
+    border-radius: 12px;
+    padding: 14px 16px;
+}
+
+.callout ul{
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.75;
+    font-size: 1.08rem;
+}
+
+.remort-example{
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(200,180,120,.28);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 10px 0 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 1.05rem;
+    color: rgba(235,235,235,0.95);
+}
+
+@media (max-width: 1100px){
+    .remort-grid{ grid-template-columns: 1fr; }
+}
+
 </style>
 
 </head>
@@ -888,82 +998,99 @@ color: var(--parchment);
 </section>
 
         
+
 <section id="remorts" class="parchment-panel remort-section">
-  <h2>Remorting</h2>
+  <h2>Remorts</h2>
+  <p class="section-subtitle">
+    Reset to level 1 — keep your progress. Remorts are VoR’s long‑term growth system: earn power, expand slots, and refine your build.
+  </p>
 
-  <div class="remort-block">
-    <p>
-      Remorting is a core progression system in Void of Reality. When you reach a required level and have
-      enough killpoints or warpoints, you may choose to <strong>remort</strong>. This resets your character
-      back to level 1, but grants permanent power increases that carry forward.
-    </p>
+  <div class="remort-grid">
+    <div class="remort-card remort-card--wide">
+      <h3>How it Works</h3>
+      <p>
+        When you meet the requirements, you may <strong>remort</strong> (or <strong>transform</strong>). Your character returns to
+        <strong>level 1</strong> and your learned spells/skills are cleared, but you gain permanent bonuses for future progression.
+      </p>
+      <p class="remort-inline">
+        Each remort grants:
+        <span class="pill">Choose 5 stat increases</span>
+        <span class="pill">Choose 1 special bonus</span>
+        <span class="pill">+1 MSK</span>
+        <span class="pill">+2 MSP</span>
+      </p>
+      <p class="remort-note">
+        Stat increases cannot exceed your <strong>racial stat caps</strong>.
+        Use <strong>none</strong> if a choice is blocked by your cap.
+      </p>
+    </div>
 
-    <p>
-      Each remort allows you to select <strong>five stat increases</strong>, limited by your race’s maximum
-      stat caps. In addition, you select <strong>one special bonus</strong> that enhances combat or survivability.
-    </p>
-  </div>
+    <div class="remort-card">
+      <h3>Requirements</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Remort</th><th>Level</th><th>Killpoints</th><th>or Warpoints</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>55</td><td>500</td><td>0</td></tr>
+          <tr><td>2</td><td>55</td><td>1,000</td><td>0</td></tr>
+          <tr><td>3</td><td>55</td><td>2,000</td><td>5</td></tr>
+          <tr><td>4</td><td>60</td><td>4,000</td><td>10</td></tr>
+          <tr><td>5</td><td>60</td><td>8,000</td><td>15</td></tr>
+          <tr><td>6</td><td>65</td><td>16,000</td><td>20</td></tr>
+          <tr><td>7</td><td>65</td><td>32,000</td><td>25</td></tr>
+          <tr><td>8</td><td>65</td><td>64,000</td><td>30</td></tr>
+          <tr><td>9</td><td>75</td><td>128,000</td><td>40</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-  <div class="remort-block">
-    <h3>Remort Requirements</h3>
-    <ul class="remort-list">
-      <li>Remort 1: Level 55, 500 KPs or 0 WPs</li>
-      <li>Remort 2: Level 55, 1,000 KPs or 0 WPs</li>
-      <li>Remort 3: Level 55, 2,000 KPs or 5 WPs</li>
-      <li>Remort 4: Level 60, 4,000 KPs or 10 WPs</li>
-      <li>Remort 5: Level 60, 8,000 KPs or 15 WPs</li>
-      <li>Remort 6: Level 65, 16,000 KPs or 20 WPs</li>
-      <li>Remort 7: Level 65, 32,000 KPs or 25 WPs</li>
-      <li>Remort 8: Level 65, 64,000 KPs or 30 WPs</li>
-      <li>Remort 9: Level 75, 128,000 KPs or 40 WPs</li>
-    </ul>
-  </div>
+    <div class="remort-card">
+      <h3>Stat Choices (Pick 5)</h3>
+      <table class="data-table">
+        <thead><tr><th>Option</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><strong>str</strong></td><td>+1 Strength</td></tr>
+          <tr><td><strong>int</strong></td><td>+1 Intelligence</td></tr>
+          <tr><td><strong>wis</strong></td><td>+1 Wisdom</td></tr>
+          <tr><td><strong>con</strong></td><td>+1 Constitution</td></tr>
+          <tr><td><strong>dex</strong></td><td>+1 Dexterity</td></tr>
+          <tr><td><strong>none</strong></td><td>Use only if blocked by racial caps</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-  <div class="remort-block">
-    <h3>Stat Choices</h3>
-    <ul class="remort-list">
-      <li><strong>STR</strong> – Increase Strength</li>
-      <li><strong>INT</strong> – Increase Intelligence</li>
-      <li><strong>WIS</strong> – Increase Wisdom</li>
-      <li><strong>CON</strong> – Increase Constitution</li>
-      <li><strong>DEX</strong> – Increase Dexterity</li>
-      <li><strong>NONE</strong> – Used when capped by racial limits</li>
-    </ul>
-  </div>
+    <div class="remort-card">
+      <h3>Special Bonus (Pick 1)</h3>
+      <table class="data-table">
+        <thead><tr><th>Option</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><strong>hp</strong></td><td>+40 hit points</td></tr>
+          <tr><td><strong>mana</strong></td><td>+40 maximum mana</td></tr>
+          <tr><td><strong>apb</strong></td><td>+3 attack power bonus (damroll)</td></tr>
+          <tr><td><strong>bs</strong></td><td>+3 backstab damage</td></tr>
+          <tr><td><strong>magic</strong></td><td>+10 magic damage</td></tr>
+          <tr><td><strong>heal</strong></td><td>+10 healing power</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-  <div class="remort-block">
-    <h3>Special Bonuses</h3>
-    <ul class="remort-list">
-      <li><strong>hp</strong> – +40 hit points</li>
-      <li><strong>mana</strong> – +40 maximum mana</li>
-      <li><strong>apb</strong> – +3 attack power bonus</li>
-      <li><strong>bs</strong> – +3 backstab damage</li>
-      <li><strong>magic</strong> – +10 spell damage</li>
-      <li><strong>heal</strong> – +10 healing power</li>
-    </ul>
-  </div>
-
-  <div class="remort-block">
-    <h3>Important Notes</h3>
-    <ul class="remort-list">
-      <li>Remorting resets your level to 1 and removes learned spells and skills.</li>
-      <li>After your first remort, you use the higher HP progression table.</li>
-      <li>After your 1st remort, hunger is disabled.</li>
-      <li>After your 3rd remort, thirst is disabled.</li>
-      <li>Each remort grants <strong>+1 skill slot</strong> and <strong>+2 spell slots</strong>.</li>
-    </ul>
-  </div>
-
-  <div class="remort-example">
-Example usage:
-remort str str con dex dex apb
+    <div class="remort-card remort-card--wide">
+      <h3>What Remorting Does</h3>
+      <div class="callout">
+        <ul>
+          <li>Resets you to <strong>level 1</strong> and clears learned spells/skills.</li>
+          <li>After your <strong>first remort</strong>, you move to the higher remort HP table.</li>
+          <li>After remort <strong>1</strong>, hunger is disabled; after remort <strong>3</strong>, thirst is disabled.</li>
+          <li>Each remort grants <strong>+1 MSK</strong> and <strong>+2 MSP</strong> (slot growth over time).</li>
+        </ul>
+      </div>
+      <h3 style="margin-top: 18px;">Examples</h3>
+      <pre class="remort-example">remort str str con dex dex apb
 transform str str con dex dex apb
 
-This grants:
-+2 Strength
-+1 Constitution
-+2 Dexterity
-+Attack Power bonus
+( +2 STR, +1 CON, +2 DEX, and APB )</pre>
+    </div>
   </div>
 </section>
 
