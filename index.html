@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Void of Reality - A Medieval MUD Since 1996</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --parchment: #d4c4a8;
+            --parchment-dark: #b8a88c;
+            --ink-dark: #1a1510;
+            --ink-brown: #3d2914;
+            --gold: #c9a227;
+            --gold-dark: #8b6914;
+            --blood-red: #8b1a1a;
+            --stone-dark: #2a2520;
+            --stone-light: #4a4035;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: var(--stone-dark);
+            color: var(--parchment);
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        /* Stone texture background */
+        .stone-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(74, 64, 53, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(74, 64, 53, 0.3) 0%, transparent 50%),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.03) 2px,
+                    rgba(0,0,0,0.03) 4px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.02) 2px,
+                    rgba(0,0,0,0.02) 4px
+                ),
+                var(--stone-dark);
+            z-index: -1;
+        }
+
+        /* Decorative border frame */
+        .page-frame {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+        }
+
+        .banner-decoration {
+            width: 100%;
+            max-width: 600px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .banner-decoration::before,
+        .banner-decoration::after {
+            content: '◆';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 12px;
+        }
+
+        .banner-decoration::before { left: 20%; }
+        .banner-decoration::after { right: 20%; }
+
+        h1 {
+            font-family: 'Cinzel Decorative', 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            color: var(--gold);
+            text-shadow: 
+                2px 2px 0 var(--ink-dark),
+                4px 4px 8px rgba(0,0,0,0.5),
+                0 0 40px rgba(201, 162, 39, 0.3);
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--parchment-dark);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .since-badge {
+            display: inline-block;
+            padding: 8px 25px;
+            border: 1px solid var(--gold-dark);
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--gold);
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        .since-badge::before,
+        .since-badge::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold-dark);
+            font-size: 8px;
+        }
+
+        .since-badge::before { left: 8px; }
+        .since-badge::after { right: 8px; }
+
+        /* Shield/Crest decoration */
+        .crest {
+            width: 120px;
+            height: 140px;
+            margin: 40px auto 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .crest svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+        }
+
+        /* Main Content */
+        main {
+            padding: 0 20px;
+        }
+
+        /* Parchment panel styling */
+        .parchment-panel {
+            background: 
+                linear-gradient(135deg, rgba(212, 196, 168, 0.95) 0%, rgba(184, 168, 140, 0.95) 100%);
+            border-radius: 4px;
+            padding: 40px;
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: 
+                0 4px 20px rgba(0,0,0,0.4),
+                inset 0 0 60px rgba(139, 105, 20, 0.1);
+            color: var(--ink-brown);
+        }
+
+        .parchment-panel::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(139, 105, 20, 0.3);
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+        .parchment-panel h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--ink-dark);
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .parchment-panel h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+            margin: 15px auto 0;
+        }
+
+        .parchment-panel p {
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Connection Box */
+        .connect-box {
+            background: var(--ink-dark);
+            border: 2px solid var(--gold);
+            padding: 30px;
+            text-align: center;
+            margin: 40px auto;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .connect-box::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 16px;
+            background: var(--stone-dark);
+        }
+
+        .connect-box::after {
+            content: '⚔';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            font-size: 20px;
+        }
+
+        .connect-label {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--parchment-dark);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .connect-address {
+            font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+            letter-spacing: 0.05em;
+        }
+
+        .connect-note {
+            font-size: 0.9rem;
+            color: var(--parchment-dark);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(42, 37, 32, 0.8);
+            border: 1px solid var(--stone-light);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--gold-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+            letter-spacing: 0.1em;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            color: var(--parchment-dark);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 20px 30px;
+            margin-top: 40px;
+            border-top: 1px solid var(--stone-light);
+        }
+
+        .footer-decoration {
+            font-size: 1.5rem;
+            color: var(--gold-dark);
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            color: var(--parchment-dark);
+            margin-bottom: 8px;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--parchment);
+        }
+
+        /* Torch glow effect on sides */
+        .torch-glow-left,
+        .torch-glow-right {
+            position: fixed;
+            top: 20%;
+            width: 150px;
+            height: 300px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .torch-glow-left {
+            left: 0;
+            background: radial-gradient(ellipse at left center, rgba(201, 162, 39, 0.08) 0%, transparent 70%);
+        }
+
+        .torch-glow-right {
+            right: 0;
+            background: radial-gradient(ellipse at right center, rgba(201, 162, 39, 0.08) 0%, transparent 70%);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .parchment-panel {
+                padding: 25px 20px;
+            }
+            
+            .connect-box {
+                padding: 25px 15px;
+            }
+            
+            .connect-address {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Subtle animation for gold elements */
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+
+        h1 {
+            animation: shimmer 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="stone-bg"></div>
+    <div class="torch-glow-left"></div>
+    <div class="torch-glow-right"></div>
+
+    <div class="page-frame">
+        <header>
+            <div class="banner-decoration"></div>
+            <h1>Void of Reality</h1>
+            <p class="subtitle">A Text-Based Adventure Awaits</p>
+            <span class="since-badge">Forged in 1996</span>
+            
+            <!-- Simple Shield/Crest SVG -->
+            <div class="crest">
+                <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#4a4035"/>
+                            <stop offset="50%" style="stop-color:#2a2520"/>
+                            <stop offset="100%" style="stop-color:#1a1510"/>
+                        </linearGradient>
+                        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#8b6914"/>
+                            <stop offset="50%" style="stop-color:#c9a227"/>
+                            <stop offset="100%" style="stop-color:#8b6914"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Shield shape -->
+                    <path d="M50 5 L95 20 L95 60 Q95 100 50 115 Q5 100 5 60 L5 20 Z" 
+                          fill="url(#shieldGrad)" stroke="url(#goldGrad)" stroke-width="2"/>
+                    <!-- Inner border -->
+                    <path d="M50 12 L88 25 L88 58 Q88 93 50 107 Q12 93 12 58 L12 25 Z" 
+                          fill="none" stroke="#8b6914" stroke-width="1" opacity="0.5"/>
+                    <!-- Crossed swords -->
+                    <line x1="30" y1="35" x2="70" y2="85" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="70" y1="35" x2="30" y2="85" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>
+                    <!-- Sword hilts -->
+                    <circle cx="30" cy="35" r="4" fill="#c9a227"/>
+                    <circle cx="70" cy="35" r="4" fill="#c9a227"/>
+                    <!-- Center gem -->
+                    <circle cx="50" cy="60" r="8" fill="#8b1a1a" stroke="#c9a227" stroke-width="1.5"/>
+                    <circle cx="48" cy="58" r="2" fill="#d44" opacity="0.6"/>
+                </svg>
+            </div>
+        </header>
+
+        <main>
+            <!-- Welcome Panel -->
+            <section class="parchment-panel">
+                <h2>Enter the Void</h2>
+                <p>
+                    Step into a world of fantasy and adventure that has captivated players for nearly three decades. 
+                    Void of Reality is a Multi-User Dungeon (MUD) — a text-based multiplayer game where your 
+                    imagination brings the world to life.
+                </p>
+                <p>
+                    Battle fearsome creatures, master powerful abilities, join guilds of like-minded adventurers, 
+                    and carve your legend into the annals of history. Whether you seek glory in combat, 
+                    riches through exploration, or the thrill of player-versus-player warfare, 
+                    your destiny awaits.
+                </p>
+            </section>
+
+            <!-- Connection Box -->
+            <div class="connect-box">
+                <p class="connect-label">Begin Your Journey</p>
+                <p class="connect-address">vor.voidofreality.org : 7777</p>
+                <p class="connect-note">Connect using your favorite MUD client (Mudlet, zMUD, TinTin++, etc.)</p>
+            </div>
+
+            <!-- Features -->
+            <section class="feature-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">⚔️</span>
+                    <h3>Epic Combat</h3>
+                    <p>Engage in real-time tactical battles with a deep combat system featuring weapons, magic, and special abilities.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🏰</span>
+                    <h3>Vast World</h3>
+                    <p>Explore countless areas filled with quests, secrets, and challenges waiting to be discovered.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚗️</span>
+                    <h3>Character Depth</h3>
+                    <p>Multiple races, guilds, and a remort system let you build truly unique characters over time.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💎</span>
+                    <h3>Powerful Items</h3>
+                    <p>Discover, enchant, and socket equipment to create legendary gear worthy of heroes.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">👥</span>
+                    <h3>Community</h3>
+                    <p>Join a welcoming community of veteran and new players alike, united by a love of adventure.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🗺️</span>
+                    <h3>Modern Clients</h3>
+                    <p>Full support for GMCP and MSDP protocols enables enhanced mapping and interface features.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-decoration">— ✦ —</div>
+            <p>Void of Reality has been running continuously since 1996</p>
+            <p>Built on the EmlenMUD codebase</p>
+            <p style="margin-top: 20px; font-size: 0.85rem;">
+                New to MUDs? Try <a href="https://www.mudlet.org/" target="_blank">Mudlet</a> — it's free and works great!
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
