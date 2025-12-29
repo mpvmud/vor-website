@@ -685,6 +685,75 @@ color: var(--parchment);
             box-shadow: 0 14px 40px rgba(0,0,0,0.45);
             text-shadow: 0 0 12px rgba(200,180,120,0.45);
         }
+
+.page-nav {
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin:18px 0 30px;
+}
+.page-nav a {
+    font-size:1.2rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    color:#c9b47a;
+    text-decoration:none;
+    padding:8px 14px;
+    border:1px solid rgba(200,180,120,.35);
+    border-radius:10px;
+    background:rgba(0,0,0,.35);
+    transition:all .2s ease;
+}
+.page-nav a:hover {
+    color:#fff;
+    text-shadow:0 0 12px rgba(200,180,120,.6);
+    border-color:rgba(200,180,120,.7);
+}
+
+.remort-section {
+    margin-top:50px;
+}
+
+.remort-section h2 {
+    text-align:center;
+    font-size:1.8rem;
+    letter-spacing:.12em;
+    margin-bottom:12px;
+}
+
+.remort-block {
+    max-width:1100px;
+    margin:0 auto 30px;
+    font-size:1.15rem;
+    line-height:1.75;
+    text-align:left;
+}
+
+.remort-block strong {
+    color:#f2d38a;
+}
+
+.remort-list {
+    margin:16px auto;
+    max-width:900px;
+    font-size:1.1rem;
+}
+
+.remort-list li {
+    margin:6px 0;
+}
+
+.remort-example {
+    background:rgba(0,0,0,0.4);
+    border:1px solid rgba(200,180,120,.35);
+    border-radius:12px;
+    padding:18px 22px;
+    margin-top:20px;
+    font-family:monospace;
+    white-space:pre-wrap;
+    color:#e8e8e8;
+}
+
 </style>
 
 </head>
@@ -707,7 +776,7 @@ color: var(--parchment);
 
         <main>
             
-<section class="parchment-panel">
+<section id="races" class="parchment-panel">
   <h2>Races</h2>
   <p class="race-note">
     Your race defines your stat caps, slot limits, and racial abilities.
@@ -787,7 +856,7 @@ color: var(--parchment);
 
 
             
-<section class="parchment-panel">
+<section id="guilds" class="parchment-panel">
   <h2>Guilds</h2>
   <p style="text-align:center; font-size:1.15rem; margin-bottom: 18px;">
     Guilds grant permanent bonuses. Choose a major path, then refine with a minor discipline.
@@ -818,7 +887,87 @@ color: var(--parchment);
   </div>
 </section>
 
-        </main>
+        
+<section id="remorts" class="parchment-panel remort-section">
+  <h2>Remorting</h2>
+
+  <div class="remort-block">
+    <p>
+      Remorting is a core progression system in Void of Reality. When you reach a required level and have
+      enough killpoints or warpoints, you may choose to <strong>remort</strong>. This resets your character
+      back to level 1, but grants permanent power increases that carry forward.
+    </p>
+
+    <p>
+      Each remort allows you to select <strong>five stat increases</strong>, limited by your race’s maximum
+      stat caps. In addition, you select <strong>one special bonus</strong> that enhances combat or survivability.
+    </p>
+  </div>
+
+  <div class="remort-block">
+    <h3>Remort Requirements</h3>
+    <ul class="remort-list">
+      <li>Remort 1: Level 55, 500 KPs or 0 WPs</li>
+      <li>Remort 2: Level 55, 1,000 KPs or 0 WPs</li>
+      <li>Remort 3: Level 55, 2,000 KPs or 5 WPs</li>
+      <li>Remort 4: Level 60, 4,000 KPs or 10 WPs</li>
+      <li>Remort 5: Level 60, 8,000 KPs or 15 WPs</li>
+      <li>Remort 6: Level 65, 16,000 KPs or 20 WPs</li>
+      <li>Remort 7: Level 65, 32,000 KPs or 25 WPs</li>
+      <li>Remort 8: Level 65, 64,000 KPs or 30 WPs</li>
+      <li>Remort 9: Level 75, 128,000 KPs or 40 WPs</li>
+    </ul>
+  </div>
+
+  <div class="remort-block">
+    <h3>Stat Choices</h3>
+    <ul class="remort-list">
+      <li><strong>STR</strong> – Increase Strength</li>
+      <li><strong>INT</strong> – Increase Intelligence</li>
+      <li><strong>WIS</strong> – Increase Wisdom</li>
+      <li><strong>CON</strong> – Increase Constitution</li>
+      <li><strong>DEX</strong> – Increase Dexterity</li>
+      <li><strong>NONE</strong> – Used when capped by racial limits</li>
+    </ul>
+  </div>
+
+  <div class="remort-block">
+    <h3>Special Bonuses</h3>
+    <ul class="remort-list">
+      <li><strong>hp</strong> – +40 hit points</li>
+      <li><strong>mana</strong> – +40 maximum mana</li>
+      <li><strong>apb</strong> – +3 attack power bonus</li>
+      <li><strong>bs</strong> – +3 backstab damage</li>
+      <li><strong>magic</strong> – +10 spell damage</li>
+      <li><strong>heal</strong> – +10 healing power</li>
+    </ul>
+  </div>
+
+  <div class="remort-block">
+    <h3>Important Notes</h3>
+    <ul class="remort-list">
+      <li>Remorting resets your level to 1 and removes learned spells and skills.</li>
+      <li>After your first remort, you use the higher HP progression table.</li>
+      <li>After your 1st remort, hunger is disabled.</li>
+      <li>After your 3rd remort, thirst is disabled.</li>
+      <li>Each remort grants <strong>+1 skill slot</strong> and <strong>+2 spell slots</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="remort-example">
+Example usage:
+remort str str con dex dex apb
+transform str str con dex dex apb
+
+This grants:
++2 Strength
++1 Constitution
++2 Dexterity
++Attack Power bonus
+  </div>
+</section>
+
+</main>
 
         <footer>
             <div class="banner-decoration"></div>
