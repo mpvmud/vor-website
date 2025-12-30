@@ -146,7 +146,7 @@ color: var(--parchment);
             padding: 8px 25px;
             border: 1px solid var(--gold-dark);
             font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
+            font-size: 1.5rem;
             color: var(--gold);
             letter-spacing: 0.15em;
             position: relative;
@@ -159,11 +159,11 @@ color: var(--parchment);
             top: 50%;
             transform: translateY(-50%);
             color: var(--gold-dark);
-            font-size: 8px;
+            font-size: 24px;
         }
 
-        .since-badge::before { left: 8px; }
-        .since-badge::after { right: 8px; }
+        .since-badge::before { left: 3px; }
+        .since-badge::after { right: 3px; }
 
         /* Shield/Crest decoration */
         .crest {
@@ -182,7 +182,53 @@ color: var(--parchment);
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
         }
 
-        /* Main Content */
+        
+        /* === TITLE ROW (SHIELDS FLANKING TITLE) === */
+        .title-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+            margin: 10px auto 6px;
+            flex-wrap: nowrap; /* keep Void of Reality on one line */
+        }
+
+        .title-row h1 {
+            white-space: nowrap; /* force single line title */
+            margin-bottom: 0;    /* title-row controls spacing */
+        }
+
+        /* Reuse .crest but override "below title" spacing when used inline */
+        .title-row .crest {
+            width: 110px;
+            height: 128px;
+            margin: 0;
+        }
+
+        .title-row .crest svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 6px 14px rgba(0,0,0,0.55));
+        }
+
+        /* Slight inward tilt */
+        .crest-left { transform: rotate(-4deg); }
+        .crest-right { transform: rotate(4deg); }
+
+        /* Mobile: stack shields above/below title so nothing squishes */
+        @media (max-width: 700px) {
+            .title-row {
+                flex-direction: column;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+            .title-row h1 { white-space: normal; }
+            .title-row .crest {
+                width: 80px;
+                height: 96px;
+            }
+        }
+/* Main Content */
         main {
             padding: 0 20px;
         }
@@ -219,12 +265,15 @@ color: var(--parchment);
 
         .parchment-panel h2 {
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: #f1ede4;
+            font-size: 3.0rem;
+            color: #ff3b3b;
             text-align: center;
             margin-bottom: 25px;
             position: relative;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+            text-shadow:
+                0 0 8px rgba(255, 77, 77, 0.7),
+                0 0 18px rgba(255, 77, 77, 0.45),
+                0 0 30px rgba(255, 77, 77, 0.25);
         }
 
         .parchment-panel h2::after {
@@ -237,7 +286,7 @@ color: var(--parchment);
         }
 
         .parchment-panel p {
-            font-size: 1.15rem;
+            font-size: 1.75rem;
             margin-bottom: 15px;
             text-align: center;
             color: rgba(216, 210, 197, 0.92);
@@ -289,69 +338,85 @@ color: var(--parchment);
             border-color: rgba(139, 184, 255, 0.75);
             box-shadow: 0 0 18px rgba(139, 184, 255, 0.30), inset 0 0 18px rgba(0,0,0,0.7);
         }
+/* === CONNECT / ADDRESS GLOW === */
+@keyframes goldPulse {
+    0% {
+        text-shadow:
+            0 0 12px rgba(255, 210, 120, 0.45),
+            0 0 28px rgba(255, 190, 90, 0.35),
+            0 0 50px rgba(120, 160, 255, 0.25);
+    }
 
-        .connect-box {
-            background: rgba(10, 9, 12, 0.92);
-            border: 1px solid rgba(184, 155, 60, 0.7);
-            box-shadow:
-                0 0 0 1px rgba(107, 15, 20, 0.25),
-                0 25px 80px rgba(0,0,0,0.75),
-                inset 0 0 34px rgba(43, 58, 85, 0.26);
-            padding: 40px 34px;
-            text-align: center;
-            margin: 44px auto;
-            max-width: 620px;
-            position: relative;
-            border-radius: 2px;
-        }
+    50% {
+        text-shadow:
+            0 0 22px rgba(255, 220, 140, 0.95),
+            0 0 55px rgba(255, 190, 90, 0.85),
+            0 0 90px rgba(140, 180, 255, 0.65),
+            0 0 140px rgba(255, 200, 120, 0.35);
+    }
 
-        .connect-box::before {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 16px;
-            background: var(--stone-dark);
-            color: var(--parchment);
+    100% {
+        text-shadow:
+            0 0 12px rgba(255, 210, 120, 0.45),
+            0 0 28px rgba(255, 190, 90, 0.35),
+            0 0 50px rgba(120, 160, 255, 0.25);
+    }
 }
 
-        .connect-box::after {
-            content: '⚔';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--gold);
-            font-size: 20px;
-        }
+.connect-box {
+    background: rgba(10, 9, 12, 0.92);
+    border: 1px solid rgba(184, 155, 60, 0.7);
+    box-shadow:
+        0 0 0 1px rgba(107, 15, 20, 0.25),
+        0 25px 80px rgba(0,0,0,0.75),
+        inset 0 0 34px rgba(43, 58, 85, 0.26);
+    padding: 40px 34px;
+    text-align: center;
+    margin: 44px auto;
+    max-width: 950px;
+    position: relative;
+    border-radius: 2px;
+}
 
-        .connect-label {
-            font-family: 'Cinzel', serif;
-            font-size: 1.05rem;
-            color: var(--parchment-dark);
-            letter-spacing: 0.24em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
+.connect-box::after {
+    content: '⚔';
+    position: absolute;
+    top: -44px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #cfa84a;
+    font-size: 50px;
+    text-shadow: 0 0 10px rgba(200,170,90,.6);
+}
 
-        .connect-address {
-            font-family: 'Courier New', monospace;
-            font-size: 1.8rem;
-            color: rgba(184, 155, 60, 0.98);
-            text-shadow:
-                0 0 14px rgba(184, 155, 60, 0.50),
-                0 0 22px rgba(43, 58, 85, 0.40);
-            letter-spacing: 0.06em;
-        }
+.connect-label {
+    font-family: 'Cinzel', serif;
+    font-size: 1.25rem;
+    color: var(--parchment-dark);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
 
-        .connect-note {
-            font-size: 0.9rem;
-            color: var(--parchment-dark);
-            margin-top: 15px;
-            font-style: italic;
-        }
+.connect-address {
+    font-family: 'Courier New', monospace;
+    font-size: 2.5rem;
+    color: rgba(184, 155, 60, 0.98);
+    letter-spacing: 0.08em;
+
+    text-shadow:
+        0 0 14px rgba(184, 155, 60, 0.50),
+        0 0 22px rgba(43, 58, 85, 0.40);
+
+    animation: goldPulse 3.5s ease-in-out infinite;
+}
+
+.connect-note {
+    font-size: 1.50rem;
+    color: var(--parchment-dark);
+    margin-top: 14px;
+    font-style: italic;
+}
 
         /* Feature Grid */
         .feature-grid {
@@ -389,9 +454,18 @@ color: var(--parchment);
             display: block;
         }
 
+        .feature-card h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.7rem;
+            color: #b02020;
+            margin-bottom: 12px;
+            letter-spacing: 0.1em;
+        }
+
+
         .feature-card h3 {
             font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: var(--gold);
             margin-bottom: 12px;
             letter-spacing: 0.1em;
@@ -400,7 +474,7 @@ color: var(--parchment);
         .detail-hint{
             margin-top: 14px;
             margin-bottom: 0;
-            font-size: 1.0rem;
+            font-size: 1.4rem;
             font-weight: 800;
             color: rgba(139, 184, 255, 0.98);
             text-shadow: 0 0 14px rgba(139, 184, 255, 0.35), 0 0 18px rgba(107, 15, 20, 0.22);
@@ -411,7 +485,7 @@ color: var(--parchment);
         .feature-link:focus { outline: 2px solid rgba(139, 184, 255, 0.5); outline-offset: 3px; }
 
         .feature-card p {
-            font-size: 1rem;
+            font-size: 1.3rem;
             color: rgba(216, 210, 197, 0.78);
             line-height: 1.6;
         }
@@ -431,7 +505,7 @@ color: var(--parchment);
         }
 
         footer p {
-            font-size: 0.95rem;
+            font-size: 1.35rem;
             color: var(--parchment-dark);
             margin-bottom: 8px;
         }
@@ -496,21 +570,24 @@ color: var(--parchment);
             padding: 40px 34px;
             text-align: center;
             margin: 44px auto;
-            max-width: 620px;
+            max-width: 950px;
             position: relative;
             border-radius: 2px;
         }
 
-        .connect-address {
-            font-family: 'Courier New', monospace;
-            font-size: 1.8rem;
-            color: rgba(184, 155, 60, 0.98);
-            text-shadow:
-                0 0 14px rgba(184, 155, 60, 0.50),
-                0 0 22px rgba(43, 58, 85, 0.40);
-            letter-spacing: 0.06em;
-        }
+.connect-address {
+    font-family: 'Courier New', monospace;
+    font-size: 2.5rem;
+    color: rgba(184, 155, 60, 0.98);
+    letter-spacing: 0.1em;
 
+    text-shadow:
+        0 0 16px rgba(255, 210, 120, 0.65),
+        0 0 40px rgba(255, 190, 90, 0.6),
+        0 0 90px rgba(120, 160, 255, 0.45);
+
+    animation: goldPulse 3.5s ease-in-out infinite;
+}
         }
 
         /* Subtle animation for gold elements */
@@ -529,13 +606,9 @@ color: var(--parchment);
     <div class="page-frame">
         <header>
             <div class="banner-decoration"></div>
-            <h1>Void of Reality</h1>
-            <p class="subtitle">A Text-Based Adventure Awaits</p>
-            <span class="since-badge">Forged in 1996</span>
-            
-            <!-- Simple Shield/Crest SVG -->
-            <div class="crest">
-                <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+            <div class="title-row">
+                <div class="crest crest-left">
+                    <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" style="stop-color:#4a4035"/>
@@ -564,7 +637,42 @@ color: var(--parchment);
                     <circle cx="50" cy="60" r="8" fill="#8b1a1a" stroke="#c9a227" stroke-width="1.5"/>
                     <circle cx="48" cy="58" r="2" fill="#d44" opacity="0.6"/>
                 </svg>
+                </div>
+                <h1>Void of Reality</h1>
+                <div class="crest crest-right">
+                    <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#4a4035"/>
+                            <stop offset="50%" style="stop-color:#2a2520"/>
+                            <stop offset="100%" style="stop-color:#1a1510"/>
+                        </linearGradient>
+                        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#8b6914"/>
+                            <stop offset="50%" style="stop-color:#c9a227"/>
+                            <stop offset="100%" style="stop-color:#8b6914"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Shield shape -->
+                    <path d="M50 5 L95 20 L95 60 Q95 100 50 115 Q5 100 5 60 L5 20 Z" 
+                          fill="url(#shieldGrad)" stroke="url(#goldGrad)" stroke-width="2"/>
+                    <!-- Inner border -->
+                    <path d="M50 12 L88 25 L88 58 Q88 93 50 107 Q12 93 12 58 L12 25 Z" 
+                          fill="none" stroke="#8b6914" stroke-width="1" opacity="0.5"/>
+                    <!-- Crossed swords -->
+                    <line x1="30" y1="35" x2="70" y2="85" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="70" y1="35" x2="30" y2="85" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>
+                    <!-- Sword hilts -->
+                    <circle cx="30" cy="35" r="4" fill="#c9a227"/>
+                    <circle cx="70" cy="35" r="4" fill="#c9a227"/>
+                    <!-- Center gem -->
+                    <circle cx="50" cy="60" r="8" fill="#8b1a1a" stroke="#c9a227" stroke-width="1.5"/>
+                    <circle cx="48" cy="58" r="2" fill="#d44" opacity="0.6"/>
+                </svg>
+                </div>
             </div>
+            <p class="subtitle">A Text-Based Adventure Awaits</p>
+            <span class="since-badge">Forged in 1996</span>
         </header>
 
         <main>
@@ -604,13 +712,13 @@ color: var(--parchment);
                 <div class="feature-card">
                     <span class="feature-icon">⚔️</span>
                     <h2>Epic Combat</h2>
-                    <p>Engage in real-time tactical battles with a deep combat system featuring weapons, magic, and special abilities.</p>
+                    <p>Engage in real-time tactical battles with a deep combat system featuring weapons, magic, and special abilities. You are not bound by wait state like typical muds and combat rounds. Combat moves do not lag out your commands, but that one skill gets a skill cooldown and allows you to move freely with any other commands.</p>
                 </div>
 
                 <div class="feature-card">
                     <span class="feature-icon">🏰</span>
                     <h2>Vast World</h2>
-                    <p>A 100% original world with 117 open areas and 20,000+ rooms to explore — built for discovery, danger, and long-term progression.</p>
+                    <p>A 100% original world with 117 open areas and 20,000+ rooms to explore — built for discovery, danger, and long-term progression. Skill and spells are scattered all over the world on teachers. </p>
                 </div>
 <div class="feature-card">
                     <span class="feature-icon">💎</span>
@@ -647,7 +755,7 @@ color: var(--parchment);
             <div class="footer-decoration">— ✦ —</div>
             <p>Void of Reality has been running continuously since 1996</p>
             <p>Built on the EmlenMUD codebase</p>
-            <p style="margin-top: 20px; font-size: 0.85rem;">
+            <p style="margin-top: 20px; font-size: 1.45rem;">
                 New to MUDs? Try <a href="https://www.mudlet.org/" target="_blank">Mudlet</a> — it's free and works great!
             </p>
         </footer>
