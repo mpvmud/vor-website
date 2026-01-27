@@ -143,23 +143,32 @@
             font-style: italic;
         }
 
-        .back-link {
+        .back-home {
+            text-align: center;
+            margin: 12px 0 28px;
+        }
+
+        .back-home a {
             display: inline-block;
-            margin-bottom: 20px;
-            color: var(--gold);
+            padding: 10px 16px;
+            border: 1px solid rgba(200,180,120,0.35);
+            border-radius: 10px;
+            background: rgba(0,0,0,0.35);
+            color: rgba(200,180,120,0.95);
             text-decoration: none;
-            font-family: 'Cinzel', serif;
-            font-size: 1rem;
-            letter-spacing: 0.1em;
-            transition: color 0.3s;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            font-size: 1.15rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+            transition: transform .15s ease, color .15s ease, box-shadow .15s ease, border-color .15s ease;
         }
 
-        .back-link:hover {
-            color: var(--parchment);
-        }
-
-        .back-link::before {
-            content: '\2190 ';
+        .back-home a:hover {
+            transform: translateY(-1px);
+            color: rgba(245,245,245,0.98);
+            border-color: rgba(200,180,120,0.55);
+            box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+            text-shadow: 0 0 12px rgba(200,180,120,0.45);
         }
 
         .leaderboard {
