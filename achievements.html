@@ -400,11 +400,14 @@
     </div>
 
     <script>
+        // UPDATE THIS URL TO YOUR CLOUDFLARE WORKER URL
+        const WORKER_URL = 'https://vor-achievements.voidofrealitymud.workers.dev/';
+        
         let achievementData = null;
 
         async function loadAchievements() {
             try {
-                const response = await fetch('achievements.json?' + Date.now());
+                const response = await fetch(WORKER_URL);
                 achievementData = await response.json();
                 renderLeaderboard();
             } catch (error) {
